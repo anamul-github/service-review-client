@@ -1,6 +1,7 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import AllServices from './components/AllServices/AllServices';
 import Blog from './components/Blog/Blog';
 import Home from './components/Home/Home';
 import Footer from './components/Shared/Footer/Footer';
@@ -16,6 +17,10 @@ function App() {
         {
           path: '/',
           element: <Home></Home>
+        },
+        {
+          path: '/allServices',
+          element: <AllServices></AllServices>
         },
         {
           path: '/blog',
