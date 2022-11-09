@@ -14,7 +14,7 @@ const Home = () => {
         <div>
             <div>
                 <img
-                    className=" w-100"
+                    className="w-100 img-fluid"
                     src="https://www.muscleandfitness.com/wp-content/uploads/2015/07/CubeCover.jpg?quality=86&strip=all"
                     alt="banner"
                 />
@@ -26,12 +26,12 @@ const Home = () => {
                         <Card.Body>
                             <Card.Title>{service.name}</Card.Title>
                             <Card.Text>
-                                Price : {service.price}
+                                Price : ${service.price}
                             </Card.Text>
                             <Card.Text>
                                 {service.description}
                             </Card.Text>
-                            <Link to={`/contentDetails/${service._id}`}>
+                            <Link to={`/allServices/${service.id}`}>
                                 <Button variant="primary">View Details</Button>
                             </Link>
 
@@ -39,7 +39,7 @@ const Home = () => {
                     </Card>)
                 }
             </div>
-            <Link to='/allServices'><Button className='btn-success mx-auto px-5 mb-5'>See All</Button></Link>
+            <Link to='/allServices'><Button className='btn-success mx-auto px-5 mb-5 content-center'>See All</Button></Link>
         </div>
     );
 };
