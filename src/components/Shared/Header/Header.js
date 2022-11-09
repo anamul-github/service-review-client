@@ -1,9 +1,25 @@
-import React from 'react';
-import { Container, Nav } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Button, Container, Image, Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            {user?.displayName}
+        </Tooltip>
+    );
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <Navbar className='p-4' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
@@ -27,12 +43,39 @@ const Header = () => {
                         <Nav.Link href="/" >Home</Nav.Link>
                         <Nav.Link href="/allServices">All Services</Nav.Link>
                         <Nav.Link href="/blog" >Blog</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
+
+                        {/* <Nav.Link href="/register" >Register</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+
+
+            {
+                user?.uid ?
+                    <>
+                        <Button variant="light" onClick={handleLogOut} className='mx-2'>Log out</Button>
+                    </>
+                    :
+                    <>
+                        <Link to='/login'>Login</Link>
+                        <Link to='/register'>Register</Link>
+                    </>
+            }
+
+            {user?.photoURL ?
+                <OverlayTrigger
+                    placement="bottom"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={renderTooltip}>
+                    <Image
+                        className='m-2'
+                        style={{ height: '30px' }}
+                        roundedCircle
+                        src={user?.photoURL}>
+                    </Image>
+                </OverlayTrigger>
+                : <FaUser className='text-white'></FaUser>
+            }
         </Navbar>
     );
 };
