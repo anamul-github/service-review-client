@@ -25,7 +25,7 @@ const AllServices = () => {
                             <Card.Text>
                                 {service.description}
                             </Card.Text>
-                            <Link to={`/allServices/${service.id}`}>
+                            <Link to={`/serviceDetails/${service._id}`}>
                                 <Button variant="primary">View Details</Button>
                             </Link>
 

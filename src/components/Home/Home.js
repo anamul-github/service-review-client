@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 const Home = () => {
     const [services, setServices] = useState([]);
@@ -22,7 +23,15 @@ const Home = () => {
             <div className="row row-cols-1 row-cols-md-3 mt-5">
                 {
                     services.map(service => <Card className='m-3 mx-auto' key={service._id}>
-                        <Card.Img variant="top" src={service.img} />
+                        <PhotoProvider>
+
+                            <PhotoView>
+                                <Card.Img variant="top" src={service.img} />
+                            </PhotoView>
+
+                        </PhotoProvider>
+
+
                         <Card.Body>
                             <Card.Title>{service.name}</Card.Title>
                             <Card.Text>
@@ -31,7 +40,7 @@ const Home = () => {
                             <Card.Text>
                                 {service.description}
                             </Card.Text>
-                            <Link to={`/allServices/${service.id}`}>
+                            <Link to={`/serviceDetails/${service._id}`}>
                                 <Button variant="primary">View Details</Button>
                             </Link>
 
