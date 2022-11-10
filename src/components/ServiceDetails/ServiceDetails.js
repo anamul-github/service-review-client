@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const ServiceDetails = () => {
-    const { name, img, price, description, details } = useLoaderData();
+    const { name, img, price, description, details, _id } = useLoaderData();
     const { user } = useContext(AuthContext);
 
     //get operation to show reviews
@@ -16,7 +16,6 @@ const ServiceDetails = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
-
 
     return (
         <div>

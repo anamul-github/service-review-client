@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const MyReview = ({ review }) => {
-    const { name, price, _id, img } = { review }
+    const { name, price, _id } = { review }
     const { user } = useContext(AuthContext);
 
     const handleReview = event => {
