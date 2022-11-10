@@ -9,7 +9,7 @@ const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
 
     //get operation to show reviews
-    const [reviews, setReviews] = useState({});
+    const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user.email}`)
@@ -33,6 +33,7 @@ const ServiceDetails = () => {
             message
         }
 
+        // post operation
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
@@ -116,7 +117,7 @@ const ServiceDetails = () => {
                     </thead>
                     <tbody>
                         {
-                            reviews.map(review => <ReviewRow
+                            reviews?.map(review => <ReviewRow
                                 key={review._id}
                                 review={review}
                             ></ReviewRow>)

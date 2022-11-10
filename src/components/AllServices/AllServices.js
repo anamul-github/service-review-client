@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 
 const AllServices = () => {
@@ -16,7 +17,11 @@ const AllServices = () => {
             <div className="row row-cols-1 row-cols-md-3 mb-5">
                 {
                     services.map(service => <Card className='m-3 mx-auto' key={service._id}>
-                        <Card.Img variant="top" src={service.img} />
+                        <PhotoProvider>
+                            <PhotoView src={service.img}>
+                                <Card.Img variant="top" src={service.img} />
+                            </PhotoView>
+                        </PhotoProvider>
                         <Card.Body>
                             <Card.Title>{service.name}</Card.Title>
                             <Card.Text className='text-success'>
