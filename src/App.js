@@ -5,6 +5,7 @@ import AllServices from './components/AllServices/AllServices';
 import Blog from './components/Blog/Blog';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
+import MyReview from './components/MyReview/MyReview';
 import Register from './components/Register/Register';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import Main from './layout/Main';
@@ -30,6 +31,10 @@ function App() {
             return fetch(`http://localhost:5000/services/${params.id}`)
           },
           element: <ServiceDetails></ServiceDetails>
+        },
+        {
+          path: '/myReview',
+          element: <MyReview></MyReview>
         },
         {
           path: '/blog',

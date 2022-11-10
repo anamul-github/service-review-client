@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './ReviewRow.css';
 
 const ReviewRow = ({ review }) => {
     const { serviceName, customer, message, service } = review;
@@ -15,7 +16,7 @@ const ReviewRow = ({ review }) => {
             <td>
                 {
                     reviewService?.img &&
-                    <img src={reviewService.img} alt="" />}
+                    <img className='review-img' src={reviewService.img} alt="" />}
             </td>
             <td>{customer}</td>
             <td>{serviceName}</td>

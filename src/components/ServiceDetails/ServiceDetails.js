@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
@@ -17,42 +17,42 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
     }, [user?.email])
 
-    const handleReview = event => {
-        event.preventDefault();
-        const form = event.target;
-        const cusName = `${form.name.value}`;
-        const email = user?.email || 'unregistered';
-        const message = form.message.value;
+    // const handleReview = event => {
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     const cusName = `${form.name.value}`;
+    //     const email = user?.email || 'unregistered';
+    //     const message = form.message.value;
 
-        const review = {
-            service: _id,
-            serviceName: name,
-            price,
-            customer: cusName,
-            email,
-            message
-        }
+    //     const review = {
+    //         service: _id,
+    //         serviceName: name,
+    //         price,
+    //         customer: cusName,
+    //         email,
+    //         message
+    //     }
 
-        // post operation
-        fetch('http://localhost:5000/reviews', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    alert('Review Posted');
-                    form.reset();
-                }
-            })
+    //     // post operation
+    //     fetch('http://localhost:5000/reviews', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(review)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             if (data.acknowledged) {
+    //                 alert('Review Posted');
+    //                 form.reset();
+    //             }
+    //         })
 
-            .catch(err => console.error(err));
+    //         .catch(err => console.error(err));
 
-    }
+    // }
 
 
     return (
@@ -71,11 +71,10 @@ const ServiceDetails = () => {
                     <Card.Text>
                         <h5>Details: {details}</h5>
                     </Card.Text>
-
                 </Card.Body>
             </Card>
 
-            <div>
+            {/* <div>
                 <h2 className='text-center text-primary mt-3'>Review</h2>
                 <h4 className='w-75 mx-auto'>
                     Post Your Review here:
@@ -101,7 +100,7 @@ const ServiceDetails = () => {
                         <Button type='submit' className='text-white fw-semibold'>Submit</Button>
                     </div>
                 </form>
-            </div>
+            </div> */}
             <div className='w-75 mx-auto'>
                 <h3>
                     People posted {reviews.length} reviews
@@ -112,7 +111,7 @@ const ServiceDetails = () => {
                             <th>#</th>
                             <th>Name</th>
                             <th>Service Name</th>
-                            <th>Message</th>
+                            <th>Review</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -125,6 +124,7 @@ const ServiceDetails = () => {
 
                     </tbody>
                 </Table>
+                <Button><Link className='text-white font-bold text-center' to='/myReview'>Post Your Review Here</Link></Button>
             </div>
         </div>
     );
