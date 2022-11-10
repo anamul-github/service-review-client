@@ -25,13 +25,10 @@ const Home = () => {
                 {
                     services.map(service => <Card className='m-3 mx-auto' key={service._id}>
                         <PhotoProvider>
-
                             <PhotoView>
                                 <Card.Img variant="top" src={service.img} />
                             </PhotoView>
-
                         </PhotoProvider>
-
 
                         <Card.Body>
                             <Card.Title>{service.name}</Card.Title>
