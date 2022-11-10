@@ -28,19 +28,21 @@ const Header = () => {
 
             </Container>
 
-            <Button className='me-2' variant="outline-secondary"><Link className='navbars' to='/'>Home</Link></Button>
-            <Button className='me-2' variant="outline-secondary"><Link className='navbars' to='/allServices'>Services</Link></Button>
-            <Button className='me-2' variant="outline-secondary"><Link className='navbars' to='/blog'>Blog</Link></Button>
+            <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/'>Home</Link></Button>
+            <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/allServices'>Services</Link></Button>
+            <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/blog'>Blog</Link></Button>
 
             {
                 user?.uid ?
                     <>
+                        <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/myReview'>Reviews</Link></Button>
+                        <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/addService'>Add Service</Link></Button>
                         <Button variant="light" onClick={handleLogOut} className='mx-2'>Logout</Button>
                     </>
                     :
                     <>
-                        <Button className='me-2' variant="outline-secondary"><Link className='navbars' to='/login'>Login</Link></Button>
-                        <Button className='me-2' variant="outline-secondary"><Link className='navbars' to='/register'>Register</Link></Button>
+                        <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/login'>Login</Link></Button>
+                        <Button className='me-3' variant="outline-secondary"><Link className='navbars' to='/register'>Register</Link></Button>
                     </>
             }
 

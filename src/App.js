@@ -1,6 +1,7 @@
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import AddService from './components/AddService/AddService';
 import AllServices from './components/AllServices/AllServices';
 import Blog from './components/Blog/Blog';
 import Home from './components/Home/Home';
@@ -36,6 +37,10 @@ function App() {
         {
           path: '/myReview',
           element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
+        },
+        {
+          path: '/addService',
+          element: <PrivateRoute><AddService></AddService></PrivateRoute>
         },
         {
           path: '/blog',

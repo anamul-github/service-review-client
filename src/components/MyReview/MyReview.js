@@ -49,12 +49,11 @@ const MyReview = ({ review }) => {
                 Post Your Review here:
             </h4>
             <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
-                <div className='d-flex'>
+                <div>
                     <div>
                         <label>Email Address</label><br />
                         <input type="email" name="email" placeholder="Your Email Address" defaultValue={user?.email} readOnly />
                     </div>
-
                     <div>
                         <label>Name</label> <br />
                         <input type="text" name="name" placeholder="Your Name" />
