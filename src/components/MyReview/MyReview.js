@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const MyReview = ({ review }) => {
-    const { name, price, _id } = { review }
+    const { name, price, _id } = { review };
     const { user } = useContext(AuthContext);
 
     const handleReview = event => {
@@ -44,30 +44,32 @@ const MyReview = ({ review }) => {
     }
     return (
         <div>
-            <h2 className='text-center text-primary mt-3'>Review</h2>
-            <h4 className='w-75 mx-auto'>
-                Post Your Review here:
-            </h4>
-            <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
-                <div>
+            <div>
+                <h2 className='text-center text-primary mt-3'>Review</h2>
+                <h4 className='w-75 mx-auto'>
+                    Post Your Review here:
+                </h4>
+                <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
                     <div>
-                        <label>Email Address</label><br />
-                        <input type="email" name="email" placeholder="Your Email Address" defaultValue={user?.email} readOnly />
+                        <div>
+                            <label>Email Address</label><br />
+                            <input type="email" name="email" placeholder="Your Email Address" defaultValue={user?.email} readOnly />
+                        </div>
+                        <div>
+                            <label>Name</label> <br />
+                            <input type="text" name="name" placeholder="Your Name" />
+                        </div>
                     </div>
-                    <div>
-                        <label>Name</label> <br />
-                        <input type="text" name="name" placeholder="Your Name" />
+
+                    <label>Write a review</label><br />
+                    <input type="textarea" name='message' rows={10} placeholder='Message....' />
+
+
+                    <div className='py-2'>
+                        <Button type='submit' className='text-white fw-semibold'>Submit</Button>
                     </div>
-                </div>
-
-                <label>Write a review</label><br />
-                <input type="textarea" name='message' rows={10} placeholder='Message....' />
-
-
-                <div className='py-2'>
-                    <Button type='submit' className='text-white fw-semibold'>Submit</Button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 };
