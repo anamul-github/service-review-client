@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
-const MyReview = () => {
-    const { name, price, _id } = useLoaderData();
+const MyReview = ({ review }) => {
+    const { name, price, _id, img } = { review }
     const { user } = useContext(AuthContext);
 
     const handleReview = event => {

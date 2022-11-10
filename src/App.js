@@ -6,6 +6,7 @@ import Blog from './components/Blog/Blog';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import MyReview from './components/MyReview/MyReview';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register';
 import ServiceDetails from './components/ServiceDetails/ServiceDetails';
 import Main from './layout/Main';
@@ -34,7 +35,7 @@ function App() {
         },
         {
           path: '/myReview',
-          element: <MyReview></MyReview>
+          element: <PrivateRoute><MyReview></MyReview></PrivateRoute>
         },
         {
           path: '/blog',

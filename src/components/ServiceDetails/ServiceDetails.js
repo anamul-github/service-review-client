@@ -5,54 +5,17 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const ServiceDetails = () => {
-    const { name, img, price, description, details, _id } = useLoaderData();
+    const { name, img, price, description, details } = useLoaderData();
     const { user } = useContext(AuthContext);
 
     //get operation to show reviews
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user.email}`)
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
-
-    // const handleReview = event => {
-    //     event.preventDefault();
-    //     const form = event.target;
-    //     const cusName = `${form.name.value}`;
-    //     const email = user?.email || 'unregistered';
-    //     const message = form.message.value;
-
-    //     const review = {
-    //         service: _id,
-    //         serviceName: name,
-    //         price,
-    //         customer: cusName,
-    //         email,
-    //         message
-    //     }
-
-    //     // post operation
-    //     fetch('http://localhost:5000/reviews', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(review)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data)
-    //             if (data.acknowledged) {
-    //                 alert('Review Posted');
-    //                 form.reset();
-    //             }
-    //         })
-
-    //         .catch(err => console.error(err));
-
-    // }
 
 
     return (
@@ -74,34 +37,9 @@ const ServiceDetails = () => {
                 </Card.Body>
             </Card>
 
-            {/* <div>
-                <h2 className='text-center text-primary mt-3'>Review</h2>
-                <h4 className='w-75 mx-auto'>
-                    Post Your Review here:
-                </h4>
-                <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
-                    <div className='d-flex'>
-                        <div>
-                            <label>Email Address</label><br />
-                            <input type="email" name="email" placeholder="Your Email Address" defaultValue={user?.email} readOnly />
-                        </div>
 
-                        <div>
-                            <label>Name</label> <br />
-                            <input type="text" name="name" placeholder="Your Name" />
-                        </div>
-                    </div>
-
-                    <label>Write a review</label><br />
-                    <input type="textarea" name='message' rows={10} placeholder='Message....' />
-
-
-                    <div className='py-2'>
-                        <Button type='submit' className='text-white fw-semibold'>Submit</Button>
-                    </div>
-                </form>
-            </div> */}
             <div className='w-75 mx-auto'>
+                <h2 className='text-center text-primary mt-3'>Review</h2>
                 <h3>
                     People posted {reviews.length} reviews
                 </h3>

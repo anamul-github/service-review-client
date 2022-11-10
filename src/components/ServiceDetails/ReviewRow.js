@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ReviewRow.css';
 
 const ReviewRow = ({ review }) => {
+
     const { serviceName, customer, message, service } = review;
     const [reviewService, setReviewService] = useState({});
 
