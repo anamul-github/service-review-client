@@ -1,11 +1,21 @@
-import React, { useContext } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Card, Table } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import ReviewRow from './ReviewRow';
 
 const ServiceDetails = () => {
     const { name, img, price, description, details, _id } = useLoaderData();
     const { user } = useContext(AuthContext);
+
+    //get operation to show reviews
+    const [reviews, setReviews] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [user?.email])
 
     const handleReview = event => {
         event.preventDefault();
@@ -66,6 +76,9 @@ const ServiceDetails = () => {
 
             <div>
                 <h2 className='text-center text-primary mt-3'>Review</h2>
+                <h4 className='w-75 mx-auto'>
+                    Post Your Review here:
+                </h4>
                 <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
                     <div className='d-flex'>
                         <div>
@@ -87,6 +100,30 @@ const ServiceDetails = () => {
                         <Button type='submit' className='text-white fw-semibold'>Submit</Button>
                     </div>
                 </form>
+            </div>
+            <div className='w-75 mx-auto'>
+                <h3>
+                    People posted {reviews.length} reviews
+                </h3>
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Service Name</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            reviews.map(review => <ReviewRow
+                                key={review._id}
+                                review={review}
+                            ></ReviewRow>)
+                        }
+
+                    </tbody>
+                </Table>
             </div>
         </div>
     );
