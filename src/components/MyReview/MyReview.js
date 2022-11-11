@@ -1,10 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const MyReview = ({ review }) => {
+
     const { name, price, _id } = { review };
     const { user } = useContext(AuthContext);
+
+    //get operation to show review by user
+    const [myReviews, setMyReviews] = useState({});
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+            .then(res => res.json())
+            .then(data => setMyReviews(data))
+    }, [user?.email])
 
     const handleReview = event => {
         event.preventDefault();
@@ -44,6 +54,8 @@ const MyReview = ({ review }) => {
     }
     return (
         <div>
+            <h1>You have {myReviews.length} reviews</h1>
+
             <div>
                 <h2 className='text-center text-primary mt-3'>Review</h2>
                 <h4 className='w-75 mx-auto'>

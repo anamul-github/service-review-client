@@ -5,14 +5,15 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewRow from './ReviewRow';
 
 const ServiceDetails = () => {
-    const { name, img, price, description, details, _id } = useLoaderData();
+    const { name, img, price, description, details } = useLoaderData();
     const { user } = useContext(AuthContext);
 
     //get operation to show reviews
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        // fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch('http://localhost:5000/reviews?email')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
