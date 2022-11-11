@@ -12,8 +12,8 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        // fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-        fetch('http://localhost:5000/reviews?email')
+        // fetch(`https://service-review-server-delta.vercel.app/reviews?email=${user?.email}`)
+        fetch('https://service-review-server-delta.vercel.app/reviews?email')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])

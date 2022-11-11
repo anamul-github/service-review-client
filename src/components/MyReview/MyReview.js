@@ -11,7 +11,7 @@ const MyReview = ({ review }) => {
     const [myReviews, setMyReviews] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://service-review-server-delta.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [user?.email])
@@ -33,7 +33,7 @@ const MyReview = ({ review }) => {
         }
 
         // post operation
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://service-review-server-delta.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

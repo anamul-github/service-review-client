@@ -30,7 +30,7 @@ function App() {
         {
           path: '/serviceDetails/:id',
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/services/${params.id}`)
+            return fetch(`https://service-review-server-delta.vercel.app/services/${params.id}`)
           },
           element: <ServiceDetails></ServiceDetails>
         },
