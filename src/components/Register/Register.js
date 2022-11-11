@@ -34,7 +34,7 @@ const Register = () => {
     }
 
     return (
-        <div className='w-50 mx-auto my-5 register'>
+        <div className='w-50 mx-auto my-5 py-4 register'>
             <h2 className='text-primary'>Please Register</h2>
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

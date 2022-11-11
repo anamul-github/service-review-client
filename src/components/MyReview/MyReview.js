@@ -53,11 +53,11 @@ const MyReview = ({ review }) => {
 
     }
     return (
-        <div>
-            <h1>You have {myReviews.length} reviews</h1>
+        <div className='my-5 py-3'>
+            <h1 className='ms-3'>You have {myReviews.length} reviews</h1>
 
             <div>
-                <h2 className='text-center text-primary mt-3'>Review</h2>
+                <h2 className='text-center text-primary my-3'>Review</h2>
                 <h4 className='w-75 mx-auto'>
                     Post Your Review here:
                 </h4>

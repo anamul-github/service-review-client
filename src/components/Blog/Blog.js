@@ -3,7 +3,7 @@ import { Accordion } from 'react-bootstrap';
 
 const Blog = () => {
     return (
-        <div>
+        <div className='py-3'>
             <Accordion className='m-auto accordion my-5' defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
                     <Accordion.Header><h3>#1 What is the difference between SQL and NoSQL?</h3></Accordion.Header>
