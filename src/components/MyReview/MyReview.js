@@ -54,11 +54,10 @@ const MyReview = ({ review }) => {
     }
     return (
         <div className='my-5 py-3'>
-            <h1 className='ms-3'>You have {myReviews.length} reviews</h1>
-
             <div>
                 <h2 className='text-center text-primary my-3'>Review</h2>
-                <h4 className='w-75 mx-auto'>
+                <h3 className='w-75 mx-auto text-success'>You have {myReviews.length} reviews so far</h3>
+                <h4 className='w-75 mx-auto mt-5'>
                     Post Your Review here:
                 </h4>
                 <form onSubmit={handleReview} className='w-75 mx-auto py-4'>
@@ -74,7 +73,7 @@ const MyReview = ({ review }) => {
                     </div>
 
                     <label>Write a review</label><br />
-                    <input type="textarea" name='message' rows={10} placeholder='Message....' />
+                    <textarea type="textarea" name='message' rows={4} cols={23} placeholder='Message....' />
 
 
                     <div className='py-2'>
