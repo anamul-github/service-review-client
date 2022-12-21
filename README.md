@@ -14,4 +14,4 @@
 
 * I used react-photo-view to see the picture in full screen when anyone clicks it.
 
-* I used mongodb, vercel and firebase for hosting front and backend. 
+* I used mongodb, vercel and firebase for hosting front and backend..
